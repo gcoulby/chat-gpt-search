@@ -15,13 +15,13 @@ jobs:
         with:
           persist-credentials: false
 
-      # - name: Install 🔧
-      #   run: yarn install
+      - name: Install 🔧
+        run: npm install
 
-      # - name: Build 🏗️
-      #   run: yarn build
-      #   env:
-      #     NODE_ENV: production
+      - name: Build 🏗️
+        run: npm build
+        env:
+          NODE_ENV: production
 
       - name: Deploy to GH Pages 🚀
         if: ${{ github.event_name != 'pull_request' }}

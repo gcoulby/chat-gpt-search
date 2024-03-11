@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Menu />
+    <Menu v-if="!searchHandler.showResults.value" />
     <section v-if="navigation.showHome.value">
       <SearchPanel />
       <SearchResults />
@@ -83,10 +83,14 @@
 </template>
 
 <script setup lang="ts">
+import { useSearch } from '@/composables/Search'
 import Menu from './Menu.vue'
 import SearchPanel from './SearchPanel.vue'
 import SearchResults from './SearchResults.vue'
 
 import { useNavigation } from '@/composables/Navigation'
 const navigation = useNavigation()
+const search = useSearch()
+
+const searchHandler = useSearch()
 </script>

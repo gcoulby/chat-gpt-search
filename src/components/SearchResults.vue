@@ -3,25 +3,27 @@
     <header class="flex flex-row m-auto py-4 border-b border-gray-300">
       <img class="w-10 h-10 p-1 mx-2 rounded-lg cursor-pointer" alt="Vue logo" src="../assets/logo.webp" @click="reset" />
       <!-- <img class="m-auto mb-4 w-40 rounded-lg" alt="Vue logo" src="../assets/logo.webp" /> -->
-      <div class="w-1/3">
+      <div class="w-1/2">
         <input
           type="text"
-          class="w-[90%] form-input px-4 py-2 border border-r-0 border-gray-300 rounded-l-md focus:outline-none focus:ring-1 focus:ring-grey-500 focus:border-transparent"
+          class="w-[85%] form-input px-4 py-2 border border-r-0 border-gray-300 rounded-l-md focus:outline-none focus:ring-1 focus:ring-grey-500 focus:border-transparent"
           @keydown="onSearchBarKeyDown"
           v-model="searchHandler.searchStr.value"
         />
         <button
-          class="w-[10%] px-4 py-2 bg-gray-200 text-black border border-l-0 border-gray-300 rounded-r-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-grey-500 focus:border-transparent"
+          class="w-[15%] px-4 py-2 bg-gray-200 text-black border border-l-0 border-gray-300 rounded-r-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-grey-500 focus:border-transparent"
           type="button"
           @click="searchHandler.search"
         >
-          🔍
+          <FontAwesomeIcon class="text-gray-500" :icon="faSearch" />
         </button>
       </div>
-      <div class="ml-4 mt-3">
+      <div class="ml-4 mt-2">
         <p>
           Searching: {{ fileHandler.file.value?.name }}
-          <span class="p-1 px-4 rounded bg-gray-200 cursor-pointer w-40" @click="reset">Change File</span>
+          <button class="px-4 py-1 bg-gray-200 text-gray-500 rounded hover:bg-gray-300 focus:outline-none focus:border-transparent" @click="reset">
+            Change File
+          </button>
         </p>
       </div>
       <div class="ml-auto">
@@ -45,7 +47,7 @@ import { useSearch } from '@/composables/Search'
 import { Ref, computed, ref, watch } from 'vue'
 import { Result } from '@/types'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faCog } from '@fortawesome/free-solid-svg-icons'
+import { faCog, faSearch } from '@fortawesome/free-solid-svg-icons'
 import SettingsPanel from '@/components/SettingsPanel.vue'
 
 const showSettings = ref(false)
